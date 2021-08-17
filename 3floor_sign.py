@@ -10,7 +10,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 # 配置各种key
-# Server酱申请的skey
+# qmsg酱申请的skey
 SCKEY = os.environ["SCKEY"]
 # 钉钉机器人的 webhook
 webhook = os.environ["dingding"]
@@ -155,7 +155,7 @@ def main():
         try:
             server()
         except Exception:
-            print('[+]请检查server酱配置是否正确')
+            print('[+]请检查qmsg酱配置是否正确')
     else:
         print('[+]选择不推送信息')
 
