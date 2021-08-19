@@ -4,23 +4,24 @@ import sys
 import json
 import time
 import os
+import random
 from bs4 import BeautifulSoup
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 # 禁用安全请求警告
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 # 配置各种key
-# qmsg酱申请的skey
-SCKEY = os.environ["SCKEY"]
+# Server酱申请的skey
+SCKEY = '3f42622c52182f5235710227c7068ba5'
 # 钉钉机器人的 webhook
-webhook = os.environ["dingding"]
+webhook = ''
 
 # 配置通知方式 0=dingding 1=weixin 其他为不推送
-notice = os.environ["notice"]
+notice = 1
 #手机号或邮箱
-username = os.environ["username"]
+username = '18277997626'
 #密码明文
-password = os.environ["password"]
+password = 'linxinghua020420'
 
 global content  #设置一个全局参数存储打印信息
 contents = ''
@@ -65,8 +66,10 @@ def pinglu(key):
     for sss in ss['posts']:
         print(sss['postID'])
         shiz+=1
-        dfg = f'白嫖舒服，听说满15个字会有经验，白嫖起来[吐舌][吐舌]{shiz}'
+        dfghj = random.choice(['拿走咯！！跑路','白嫖舒服，听说满15个字会有经验，白嫖起来[吐舌][吐舌]','楼主，看上你了，把话撂这了，是女的，自己想办法喜欢上我，希望你不要不知好歹','拿走不吱声会怎么样？吱声有没有葫芦啊！吱','我去试试，可以用的话谢谢楼主，给个葫芦就更谢了！！','吱一声一个葫芦？   那   那我先吱吱吱吱'])
+        dfg = f'{dfghj}{shiz}'
         post_id = sss['postID']
+        print(dfg)
         da={'post_id':post_id,'comment_id':0,'text':dfg,'patcha':'','images':'','remindUsers':''}
         tih = requests.post(f'http://floor.huluxia.com/comment/create/ANDROID/2.0?platform=2&gkey=000000&app_version=4.1.0.4.1&versioncode=20141451&market_id=floor_web&_key={key}&device_code=%5Bd%5D1f0324ee-99ca-40a8-8046-fed65d87c23d&phone_brand_type=MI',data=da)
         print(tih.text)
@@ -111,7 +114,7 @@ def server():
     message = {"msg": f"葫芦侠3楼签到通知！{contents}"}
     r = requests.post("https://qmsg.zendee.cn/group/" + SCKEY, data=message)
     if r.status_code == 200:
-        print('[+]qmsg酱已推送，请查收')
+        print('[+]server酱已推送，请查收')
 
 
 #钉钉消息推送
@@ -155,7 +158,7 @@ def main():
         try:
             server()
         except Exception:
-            print('[+]请检查qmsg酱配置是否正确')
+            print('[+]请检查server酱配置是否正确')
     else:
         print('[+]选择不推送信息')
 
