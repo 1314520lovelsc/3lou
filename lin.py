@@ -9,19 +9,18 @@ from bs4 import BeautifulSoup
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 # 禁用安全请求警告
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
 # 配置各种key
 # Server酱申请的skey
-SCKEY = '3f42622c52182f5235710227c7068ba5'
+SCKEY = os.environ["SCKEY"]
 # 钉钉机器人的 webhook
-webhook = ''
+webhook = os.environ["dingding"]
 
 # 配置通知方式 0=dingding 1=weixin 其他为不推送
-notice = 1
+notice = os.environ["notice"]
 #手机号或邮箱
-username = '18277997626'
+username = os.environ["username"]
 #密码明文
-password = 'linxinghua020420'
+password = os.environ["password"]
 
 global content  #设置一个全局参数存储打印信息
 contents = ''
