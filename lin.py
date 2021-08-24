@@ -10,7 +10,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 # 禁用安全请求警告
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 # 配置各种key
-# Server酱申请的skey
+# qmsg酱 key
 SCKEY = os.environ["SCKEY"]
 # 钉钉机器人的 webhook
 webhook = os.environ["dingding"]
