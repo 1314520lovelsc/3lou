@@ -111,7 +111,7 @@ def sign(key):
 def server():
     global contents
     message = {"msg": f"葫芦侠3楼签到通知！{contents}"}
-    r = requests.post("https://qmsg.zendee.cn/group/" + SCKEY, data=message)
+    r = requests.post("https://qmsg.zendee.cn/send/" + SCKEY, data=message)
     if r.status_code == 200:
         print('[+]server酱已推送，请查收')
 
