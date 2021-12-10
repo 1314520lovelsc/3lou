@@ -43,7 +43,7 @@ def login():
     password_md5 = md5(password)
     url = 'http://floor.huluxia.com/account/login/ANDROID/4.0?device_code=1'
     headers = {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
     }
     data = {
         'account': username,
